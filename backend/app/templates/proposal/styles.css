@@ -1,0 +1,347 @@
+/* ========== Page Setup ========== */
+@page {
+    size: A4;
+    margin: 20mm 25mm 25mm 25mm;
+}
+
+@page :first {
+    margin: 0;
+}
+
+/* ========== Base Styles ========== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #4A5568;
+    background: #FFFFFF;
+}
+
+/* ========== Cover Page ========== */
+.cover-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1B2B4B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    page-break-after: always;
+}
+
+.cover-content {
+    text-align: center;
+    color: #FFFFFF;
+    padding: 60px 40px;
+    max-width: 800px;
+}
+
+.cover-page .logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+.cover-divider {
+    width: 60%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 30px auto;
+}
+
+.cover-subtitle {
+    font-size: 18pt;
+    font-weight: 400;
+    opacity: 0.9;
+    margin: 20px 0;
+}
+
+.cover-title {
+    font-size: 32pt;
+    font-weight: 700;
+    margin: 20px 0;
+    line-height: 1.2;
+}
+
+.cover-date {
+    font-size: 20pt;
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.cover-attendees {
+    font-size: 16pt;
+    opacity: 0.9;
+    margin: 10px 0;
+}
+
+.cover-disclaimer {
+    font-size: 12pt;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 20px;
+}
+
+/* ========== Venue Pages ========== */
+.venue-page {
+    page-break-after: always;
+    padding: 20px 0;
+}
+
+.venue-page:last-of-type {
+    page-break-after: auto;
+}
+
+/* ========== Venue Header Bar ========== */
+.venue-header {
+    background-color: #1B2B4B;
+    color: #FFFFFF;
+    padding: 16px 32px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.venue-name {
+    font-size: 20pt;
+    font-weight: 700;
+}
+
+.venue-dates {
+    font-size: 16pt;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* ========== Venue Photos ========== */
+.venue-photos {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.venue-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.venue-photo-primary {
+    grid-row: span 2;
+    height: 220px;
+}
+
+.venue-photo:not(.venue-photo-primary) {
+    height: 104px;
+}
+
+/* ========== Venue Location ========== */
+.venue-location {
+    font-size: 14pt;
+    color: #4A5568;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.venue-location .icon {
+    font-size: 16pt;
+}
+
+/* ========== Venue Description ========== */
+.venue-description {
+    font-size: 11pt;
+    line-height: 1.8;
+    color: #4A5568;
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.venue-description p {
+    margin-bottom: 12px;
+}
+
+/* ========== Pros/Cons Box ========== */
+.pros-cons-box {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    padding: 20px;
+    background-color: #F7FAFC;
+    border-radius: 8px;
+    border-left: 4px solid #2EC4A0;
+}
+
+.pros-section,
+.cons-section {
+    flex: 1;
+}
+
+.pros-title,
+.cons-title {
+    font-size: 12pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+.pros-title {
+    color: #047857;
+}
+
+.cons-title {
+    color: #B91C1C;
+}
+
+.pros-content,
+.cons-content {
+    font-size: 11pt;
+    color: #4A5568;
+    line-height: 1.6;
+}
+
+/* ========== Pricing Page ========== */
+.pricing-page {
+    page-break-before: always;
+    padding: 20px 0;
+}
+
+.pricing-venue-name {
+    font-size: 20pt;
+    font-weight: 700;
+    color: #1B2B4B;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #E2E8F0;
+}
+
+.pricing-section {
+    margin-bottom: 24px;
+}
+
+.pricing-section h3 {
+    font-size: 15pt;
+    font-weight: 600;
+    color: #1B2B4B;
+    margin-bottom: 10px;
+}
+
+.pricing-section p {
+    font-size: 11pt;
+    color: #4A5568;
+    line-height: 1.7;
+}
+
+/* Total Price Box */
+.pricing-total {
+    background-color: #2EC4A0;
+    color: #FFFFFF;
+    padding: 20px 28px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+}
+
+.total-label {
+    font-size: 15pt;
+    font-weight: 600;
+}
+
+.total-amount {
+    font-size: 20pt;
+    font-weight: 700;
+}
+
+/* ========== Status Page ========== */
+.status-page {
+    page-break-before: always;
+    padding: 20px 0;
+}
+
+.status-section {
+    margin-bottom: 36px;
+}
+
+.status-section h3 {
+    font-size: 16pt;
+    font-weight: 600;
+    color: #1B2B4B;
+    margin-bottom: 16px;
+}
+
+.status-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.status-section li {
+    font-size: 12pt;
+    color: #4A5568;
+    padding: 10px 0;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.status-section li:last-child {
+    border-bottom: none;
+}
+
+/* ========== Print-specific ========== */
+@media print {
+    .venue-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .cover-page {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .pricing-total {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .pros-cons-box {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ========== Web Preview Adjustments ========== */
+@media screen {
+    body {
+        background: #F7FAFC;
+        padding: 20px;
+    }
+
+    .cover-page,
+    .venue-page,
+    .pricing-page,
+    .status-page {
+        max-width: 210mm;
+        margin: 0 auto 20px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+    }
+
+    .cover-page {
+        min-height: 297mm;
+    }
+}

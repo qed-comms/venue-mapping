@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ project.event_name }} - Venue Proposal</title>
+    <style>
+        {
+                {
+                base_css|safe
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cover Page -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <img src="{{ logo_data_uri }}" alt="QED" class="logo">
+
+            <div class="cover-divider"></div>
+
+            <p class="cover-subtitle">Brief presentation of possible venues</p>
+
+            <div class="cover-divider"></div>
+
+            <h1 class="cover-title">{{ project.event_name }}</h1>
+            {% if date_range %}
+            <p class="cover-date">{{ date_range }}</p>
+            {% endif %}
+            <p class="cover-attendees">{{ project.attendee_count }} attendees</p>
+
+            <div class="cover-divider"></div>
+
+            <p class="cover-disclaimer">All prices are excluding VAT</p>
+        </div>
+    </div>
+
+    <!-- Venue Pages -->
+    {% for pv in included_venues %}
+    <div class="venue-page">
+        <!-- Header Bar -->
+        <div class="venue-header">
+            <span class="venue-name">{{ pv.venue.name }}</span>
+            {% if pv.availability_dates %}
+            <span class="venue-dates">{{ pv.availability_dates }}</span>
+            {% endif %}
+        </div>
+
+        <!-- Photos -->
+        {% if pv.venue.photos %}
+        <div class="venue-photos">
+            {% for photo in pv.venue.photos[:4] %}
+            <img src="{{ photo.url }}" alt="{{ photo.caption or pv.venue.name }}"
+                class="venue-photo {% if loop.first %}venue-photo-primary{% endif %}">
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Location -->
+        <p class="venue-location">
+            <span class="icon">📍</span>
+            {% if pv.venue.address %}{{ pv.venue.address }}, {% endif %}{{ pv.venue.city }}
+        </p>
+
+        <!-- Description -->
+        <div class="venue-description">
+            {{ (pv.final_description or pv.ai_description or pv.venue.description_template or 'No description
+            available.')|safe }}
+        </div>
+
+        <!-- Pros/Cons -->
+        {% if pv.pros or pv.cons %}
+        <div class="pros-cons-box">
+            {% if pv.pros %}
+            <div class="pros-section">
+                <h4 class="pros-title">PROS</h4>
+                <p class="pros-content">{{ pv.pros }}</p>
+            </div>
+            {% endif %}
+            {% if pv.cons %}
+            <div class="cons-section">
+                <h4 class="cons-title">CONS</h4>
+                <p class="cons-content">{{ pv.cons }}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <!-- Pricing Pages -->
+    {% for pv in included_venues %}
+    <div class="pricing-page">
+        <h2 class="pricing-venue-name">{{ pv.venue.name }}</h2>
+
+        {% if pv.room_allocation %}
+        <div class="pricing-section">
+            <h3>Meeting Rooms</h3>
+            <p>{{ pv.room_allocation }}</p>
+        </div>
+        {% endif %}
+
+        {% if pv.catering_description %}
+        <div class="pricing-section">
+            <h3>Catering</h3>
+            <p>{{ pv.catering_description }}</p>
+        </div>
+        {% endif %}
+
+        {% if pv.quoted_price %}
+        <div class="pricing-total">
+            <span class="total-label">Total for event</span>
+            <span class="total-amount">€{{ "{:,.2f}".format(pv.quoted_price) }}</span>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <!-- Status Page -->
+    {% if awaiting_venues or declined_venues %}
+    <div class="status-page">
+        {% if awaiting_venues %}
+        <div class="status-section">
+            <h3>Waiting for answers from:</h3>
+            <ul>
+                {% for pv in awaiting_venues %}
+                <li>{{ pv.venue.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if declined_venues %}
+        <div class="status-section">
+            <h3>Venues checked and declined:</h3>
+            <ul>
+                {% for pv in declined_venues %}
+                <li>{{ pv.venue.name }}{% if pv.notes %} - {{ pv.notes }}{% endif %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+
+</html>

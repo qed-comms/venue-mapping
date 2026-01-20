@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Mapping AI | Premium Sourcing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="multi-select.css">
+    <link rel="stylesheet" href="ai-context-panel.css?v=1768907931">
+</head>
+
+<body>
+    <!-- Auth View -->
+    <div id="auth-view" class="auth-container">
+        <div class="glass auth-card animate-fade">
+            <div class="brand">
+                <h1>VENUE MAP AI</h1>
+                <p class="text-dim" style="font-size: 0.9rem; margin-top: 8px;">QED Event Management Portal</p>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="login-email" value="test@qed.com" placeholder="manager@qed.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="login-password" value="testpassword123" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+
+            <p class="text-dim" style="text-align: center; margin-top: 20px; font-size: 0.8rem;">
+                New manager? <a href="#" id="show-register" class="text-primary" style="text-decoration: none;">Request
+                    access</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Dashboard View (Hidden by default) -->
+    <div id="dashboard-view" class="app-shell" style="display: none;">
+        <aside class="sidebar">
+            <div class="brand" style="text-align: left; margin-bottom: 40px;">
+                <h1 style="color: var(--qed-white); font-size: 1.5rem;">VENUE MAP</h1>
+            </div>
+
+            <nav style="flex-grow: 1;">
+                <a href="#" class="nav-item active" data-view="projects">
+                    <i class="fa-solid fa-folder-tree"></i> Projects
+                </a>
+                <a href="#" class="nav-item" data-view="venues">
+                    <i class="fa-solid fa-map-location-dot"></i> Venue Gallery
+                </a>
+                <a href="#" class="nav-item" data-view="clients">
+                    <i class="fa-solid fa-building-user"></i> Clients
+                </a>
+            </nav>
+
+            <div class="user-profile"
+                style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                <div style="display: flex; align-items: center;">
+                    <div
+                        style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); margin-right: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <p id="user-name" style="font-weight: 600; font-size: 0.9rem;">Event Manager</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem;">QED Premium</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="btn"
+                    style="background: rgba(232, 90, 90, 0.1); color: var(--qed-red); margin-top: 15px; text-align: left; padding: 8px 12px; display: flex; align-items: center; justify-content: flex-start; border: 1px solid rgba(232, 90, 90, 0.2);">
+                    <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 8px;"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <h2 id="view-title" style="font-size: 1.8rem; flex: 1;">Active Projects</h2>
+                <button id="new-btn" class="btn btn-primary" style="width: auto; padding: 10px 24px;">
+                    <i class="fa-solid fa-plus" style="margin-right: 8px;"></i> New Project
+                </button>
+            </header>
+
+            <div id="content-area">
+                <!-- Content will be injected here -->
+                <div class="grid-cards" id="projects-grid">
+                    <!-- Placeholder cards -->
+                    <div class="card animate-fade">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between; align-items: start;">
+                                <h3 style="font-size: 1.1rem; margin-bottom: 4px;">TechSummit 2026</h3>
+                                <span class="status-pill status-active">Active</span>
+                            </div>
+                            <p class="text-dim" style="font-size: 0.85rem; margin-bottom: 16px;">Acme Corp |
+                                Brussels</p>
+                            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                                <div
+                                    style="background: var(--qed-bg-grey); padding: 8px; border-radius: 4px; text-align: center; flex: 1;">
+                                    <p class="text-dim" style="font-size: 0.7rem;">Venues</p>
+                                    <p style="font-weight: 600;">8</p>
+                                </div>
+                                <div
+                                    style="background: var(--qed-bg-grey); padding: 8px; border-radius: 4px; text-align: center; flex: 1;">
+                                    <p class="text-dim" style="font-size: 0.7rem;">Budget</p>
+                                    <p style="font-weight: 600;">€45k</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary">Open
+                                Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="venue-upload.js?v=1768563964"></script>
+    <script src="venue-gallery-views.js?v=1768568448"></script>
+    <script src="venue-photo-helpers.js?v=1768563964"></script>
+    <script src="proposal-helpers.js?v=1768910927"></script>
+    <script src="venue-ai-context-panel.js?v=1768910055"></script>
+    <script src="client-views.js?v=1768912432"></script>
+    <script src="app.js?v=1768912432"></script>
+</body>
+
+</html>
