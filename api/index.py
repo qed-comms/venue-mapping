@@ -25,7 +25,7 @@ except Exception as e:
     from fastapi import FastAPI, Response
     app = FastAPI()
     
-    @app.get("/api/{full_path:path}")
+    @app.api_route("/{full_path:path}", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
     async def capture_all(full_path: str):
         return {
             "status": "Deployment Error (Import Failed)", 
