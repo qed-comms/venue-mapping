@@ -19,7 +19,7 @@ python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 
 # PDF Generation
-weasyprint==60.2
+# weasyprint==60.2
 
 # AI Integration
 openai==1.12.0
