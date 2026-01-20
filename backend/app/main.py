@@ -55,10 +55,12 @@ async def root():
 
 from fastapi import Request
 @app.get("/debug-path")
-@app.get("/api/v1/debug-path")
-async def debug_path(request: Request):
+@app.api_route("/{path_name:path}", methods=["GET", "POST", "PUT", "DELETE"])
+async def catch_all(request: Request, path_name: str):
     return {
-        "path": request.url.path,
-        "root_path": request.scope.get("root_path"),
+        "status": "Catch-All Triggered",
+        "message": "Route not found in Vercel environment",
+        "received_path": request.url.path,
+        "method": request.method,
         "headers": dict(request.headers)
     }
