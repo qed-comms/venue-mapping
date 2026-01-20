@@ -27,8 +27,18 @@ except Exception as e:
     
     @app.api_route("/{full_path:path}", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
     async def capture_all(full_path: str):
+        import os
+        cwd = os.getcwd()
+        try:
+            ls = os.listdir(cwd)
+        except:
+            ls = ["error listing dir"]
+            
         return {
             "status": "Deployment Error (Import Failed)", 
             "error": str(e),
-            "trace": trace.split('\n')
+            "trace": trace.split('\n'),
+            "cwd": cwd,
+            "ls": ls,
+            "python_path": sys.path
         }
