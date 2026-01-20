@@ -52,3 +52,13 @@ async def root():
         "docs": "/docs",
         "health": "/health"
     }
+
+from fastapi import Request
+@app.get("/debug-path")
+@app.get("/api/v1/debug-path")
+async def debug_path(request: Request):
+    return {
+        "path": request.url.path,
+        "root_path": request.scope.get("root_path"),
+        "headers": dict(request.headers)
+    }
